@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		009B0E12E317757741CE38C8 /* Pods_Pock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 863BE70CFBAC31BDBF35B1FD /* Pods_Pock.framework */; };
+		107B091B23B93C6D004F75FA /* SStatsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107B091A23B93C6D004F75FA /* SStatsItem.swift */; };
+		107B091E23B93EF7004F75FA /* SMC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107B091D23B93EF7004F75FA /* SMC.swift */; };
 		34064337227E224700981372 /* DockFolderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34064336227E224700981372 /* DockFolderController.swift */; };
 		3406433E227ED8BC00981372 /* DockFolderItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3406433D227ED8BC00981372 /* DockFolderItemView.swift */; };
 		34064343227EDC2200981372 /* DockFolderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34064342227EDC2200981372 /* DockFolderRepository.swift */; };
@@ -88,6 +90,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		107B091A23B93C6D004F75FA /* SStatsItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SStatsItem.swift; sourceTree = "<group>"; };
+		107B091D23B93EF7004F75FA /* SMC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMC.swift; sourceTree = "<group>"; };
 		34064336227E224700981372 /* DockFolderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockFolderController.swift; sourceTree = "<group>"; };
 		3406433D227ED8BC00981372 /* DockFolderItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockFolderItemView.swift; sourceTree = "<group>"; };
 		34064342227EDC2200981372 /* DockFolderRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockFolderRepository.swift; sourceTree = "<group>"; };
@@ -232,6 +236,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		107B091C23B93EF7004F75FA /* SMCKit */ = {
+			isa = PBXGroup;
+			children = (
+				107B091D23B93EF7004F75FA /* SMC.swift */,
+			);
+			path = SMCKit;
+			sourceTree = "<group>";
+		};
 		2F31B7DC05EFA1E8090C87AE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -402,6 +414,7 @@
 		342D83A62278D5CF000D79DA /* Private */ = {
 			isa = PBXGroup;
 			children = (
+				107B091C23B93EF7004F75FA /* SMCKit */,
 				342D83AE2278D5CF000D79DA /* Pock-Bridging-Header.h */,
 				342D83A72278D5CF000D79DA /* NSTouchBar.h */,
 				342D83B12278D5CF000D79DA /* MRMediaRemote.h */,
@@ -503,6 +516,7 @@
 				342D83C72278D5CF000D79DA /* SWifiItem.swift */,
 				342D83C82278D5CF000D79DA /* SPowerItem.swift */,
 				342D83C92278D5CF000D79DA /* SClockItem.swift */,
+				107B091A23B93C6D004F75FA /* SStatsItem.swift */,
 			);
 			path = Items;
 			sourceTree = "<group>";
@@ -825,6 +839,7 @@
 				342D83E62278D5CF000D79DA /* StatusWidgetPreferencePane.swift in Sources */,
 				342D83FB2278D5CF000D79DA /* SWifiItem.swift in Sources */,
 				342D83FC2278D5CF000D79DA /* SPowerItem.swift in Sources */,
+				107B091E23B93EF7004F75FA /* SMC.swift in Sources */,
 				342D83F82278D5CF000D79DA /* StatusWidget.swift in Sources */,
 				342D83F32278D5CF000D79DA /* CCVolumeUpItem.swift in Sources */,
 				347F336922D0DBD600FA9805 /* CCSleepItem.swift in Sources */,
@@ -833,6 +848,7 @@
 				3435675B2381666F00E408EF /* WidgetsDispatcherr.swift in Sources */,
 				342D83E92278D5CF000D79DA /* PockDockHelper.m in Sources */,
 				34064345227EDCB900981372 /* DockFolderItem.swift in Sources */,
+				107B091B23B93C6D004F75FA /* SStatsItem.swift in Sources */,
 				342D84042278D5CF000D79DA /* EventStream.swift in Sources */,
 				342D84022278D5CF000D79DA /* Constants.swift in Sources */,
 				342D83F12278D5CF000D79DA /* CCVolumeDownItem.swift in Sources */,
