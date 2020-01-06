@@ -125,7 +125,16 @@ class SPowerItem: StatusItem {
         if !iconView.subviews.contains(bodyView) {
             iconView.addSubview(bodyView)
         }
-        bodyView.layer?.backgroundColor = value > 10 ? NSColor.lightGray.cgColor : NSColor.red.cgColor
+        let color: NSColor
+        switch value {
+        case ...10:
+            color = .systemRed
+        case ...25:
+            color = .systemOrange
+        default:
+            color = .lightGray
+        }
+        bodyView.layer?.backgroundColor = color.cgColor
         bodyView.frame.size.width = max(width, 1.25)
     }
 }
