@@ -16,9 +16,9 @@ class StatusWidget: PKWidget {
     
     /// Core
     private var statusElements: [StatusItem] = [
+        SStatsItem(),
         SWifiItem(),
         SPowerItem(),
-        SStatsItem(),
         SClockItem()
     ]
     private var statusElementViews: [String: NSView] = [:]
