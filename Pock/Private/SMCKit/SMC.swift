@@ -103,6 +103,14 @@ extension Double {
         let sign = bytes.0 & 0x80 == 0 ? 1.0 : -1.0
         self = sign * Double(bytes.0 & 0x7F)    // AND to mask sign bit
     }
+    
+    init(fromFLT bytes: FLT) {
+        // convert the SMCBytes to a float value
+        let byteArray: Array<UInt8> = [bytes.0, bytes.1, bytes.2, bytes.3]
+        var resultValue: Float = 0.0
+        memcpy(&resultValue, byteArray, 4)
+        self = Double(resultValue)
+    }
 }
 
 // Thanks to Airspeed Velocity for the great idea!

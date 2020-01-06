@@ -91,13 +91,23 @@ class SStatsItem: StatusItem {
     private var fans: [Fan] = []
     
     /// UI
-    private var tempLabel: NSTextField!
+    private var cpuTempLabel: NSTextField!
+    private var wattsLabel: NSTextField!
     private var stackView: NSStackView!
     private var fanGauges: [VerticalGaugeView] = []
 
     private var cpuTemperature: Double {
         let temp = try? SMCKit.temperature(TemperatureSensors.CPU_PECI.code)
         return temp ?? 0
+    }
+    
+    private var totalWatts: Double {
+        // For more codes see https://stackoverflow.com/questions/28568775/description-for-apples-smc-keys
+        let systemTotalCode = FourCharCode(fromStaticString: "PSTR")
+        guard let data = try? SMCKit.readData(SMCKey(code: systemTotalCode, info: DataTypes.FLT)) else { return 0 }
+        let value = Double(fromFLT: (data.0, data.1, data.2, data.3))
+        
+        return value
     }
     
     init() {
@@ -125,20 +135,35 @@ class SStatsItem: StatusItem {
                 stackView.addArrangedSubview(gauge)
             }
             
-            tempLabel = makeLabel()
-            stackView.addArrangedSubview(tempLabel)
+            let valuesStackView = NSStackView()
+            valuesStackView.orientation  = .vertical
+            valuesStackView.alignment    = .leading
+            valuesStackView.distribution = .fillEqually
+            valuesStackView.spacing      = 0
+            stackView.addArrangedSubview(valuesStackView)
+            
+            // Add a fixed width so the view does not jump when its values change
+            NSLayoutConstraint.activate([
+                valuesStackView.widthAnchor.constraint(equalToConstant: 42)
+            ])
+            
+            cpuTempLabel = makeLabel()
+            valuesStackView.addArrangedSubview(cpuTempLabel)
+            
+            wattsLabel = makeLabel()
+            valuesStackView.addArrangedSubview(wattsLabel)
         }
         
-        refreshTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [unowned self] _ in
-            self.reload()
+        refreshTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] _ in
+            self?.reload()
         })
     }
     
     func didUnload() {
-        SMCKit.close()
-        
         refreshTimer?.invalidate()
         refreshTimer = nil
+        
+        SMCKit.close()
     }
     
     var enabled: Bool { Defaults[.shouldShowStatsItem] }
@@ -157,8 +182,12 @@ class SStatsItem: StatusItem {
             fanGauges[index].value = fan.absoluteSpeed(with: currentSpeed)
         }
         
-        tempLabel.stringValue = String(format: "%.0f °C", cpuTemperature)
-        tempLabel.sizeToFit()
+        cpuTempLabel.stringValue = String(format: "%.0f °C", cpuTemperature)
+        cpuTempLabel.sizeToFit()
+        
+        wattsLabel.stringValue = String(format: "%.1f W", totalWatts)
+        wattsLabel.sizeToFit()
+
     }
     
     private func initStackView() {
@@ -171,7 +200,7 @@ class SStatsItem: StatusItem {
     
     private func makeLabel() -> NSTextField {
         let label = NSTextField()
-        label.font = NSFont.systemFont(ofSize: 13)
+        label.font = NSFont.systemFont(ofSize: 11)
         label.backgroundColor = .clear
         label.isBezeled = false
         label.isEditable = false
