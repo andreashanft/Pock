@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -12,6 +12,7 @@
                 <outlet property="showBatteryPercentageItem" destination="UIv-xe-fLQ" id="hAs-38-djl"/>
                 <outlet property="showDateItem" destination="XAw-dt-3HD" id="Z4g-va-feY"/>
                 <outlet property="showPowerItem" destination="P4F-Aq-avh" id="GQA-CU-urZ"/>
+                <outlet property="showStatsItem" destination="kwX-jI-nKP" id="klR-Gf-3A5"/>
                 <outlet property="showWifiItem" destination="2QA-fb-vdC" id="wvf-Iq-9Ka"/>
                 <outlet property="timeFormatTextField" destination="fXD-5d-Dqf" id="wQw-2w-3mb"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
@@ -20,12 +21,22 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="392" height="212"/>
+            <rect key="frame" x="0.0" y="0.0" width="392" height="242"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <stackView distribution="fillEqually" orientation="vertical" alignment="leading" spacing="16" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oAr-3p-C2k">
-                    <rect key="frame" x="20" y="20" width="352" height="172"/>
+                    <rect key="frame" x="20" y="20" width="352" height="202"/>
                     <subviews>
+                        <button verticalHuggingPriority="750" tag="4" translatesAutoresizingMaskIntoConstraints="NO" id="kwX-jI-nKP">
+                            <rect key="frame" x="-2" y="186" width="120" height="18"/>
+                            <buttonCell key="cell" type="check" title="Show Stats item" bezelStyle="regularSquare" imagePosition="left" inset="2" id="FRl-11-6ys">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="didChangeCheckboxValue:" target="-2" id="Moq-HJ-Nxu"/>
+                            </connections>
+                        </button>
                         <button verticalHuggingPriority="750" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="2QA-fb-vdC">
                             <rect key="frame" x="-2" y="156" width="113" height="18"/>
                             <buttonCell key="cell" type="check" title="Show Wifi item" bezelStyle="regularSquare" imagePosition="left" inset="2" id="c9g-yA-umL">
@@ -136,8 +147,10 @@
                         <integer value="1000"/>
                         <integer value="1000"/>
                         <integer value="1000"/>
+                        <integer value="1000"/>
                     </visibilityPriorities>
                     <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
                         <real value="3.4028234663852886e+38"/>
                         <real value="3.4028234663852886e+38"/>
                         <real value="3.4028234663852886e+38"/>

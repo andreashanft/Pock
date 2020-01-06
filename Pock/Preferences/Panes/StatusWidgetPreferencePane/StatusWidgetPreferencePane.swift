@@ -18,7 +18,7 @@ class StatusWidgetPreferencePane: NSViewController, NSTextFieldDelegate, Prefere
     @IBOutlet weak var showBatteryIconItem:         NSButton!
     @IBOutlet weak var showBatteryPercentageItem:   NSButton!
     @IBOutlet weak var showDateItem:                NSButton!
-    // @IBOutlet weak var showSpotlightItem:           NSButton!
+    @IBOutlet weak var showStatsItem:               NSButton!
     @IBOutlet weak var timeFormatTextField:         NSTextField!
     
     /// Preferenceable
@@ -48,7 +48,7 @@ class StatusWidgetPreferencePane: NSViewController, NSTextFieldDelegate, Prefere
         self.showBatteryIconItem.state       = Defaults[.shouldShowBatteryIcon]       ? .on : .off
         self.showBatteryPercentageItem.state = Defaults[.shouldShowBatteryPercentage] ? .on : .off
         self.showDateItem.state              = Defaults[.shouldShowDateItem]          ? .on : .off
-        // self.showSpotlightItem.state         = defaults[.shouldShowSpotlightItem]     ? .on : .off
+        self.showStatsItem.state             = Defaults[.shouldShowStatsItem]         ? .on : .off
     }
     
     @IBAction func didChangeCheckboxValue(_ checkbox: NSButton) {
@@ -64,8 +64,8 @@ class StatusWidgetPreferencePane: NSViewController, NSTextFieldDelegate, Prefere
             key = .shouldShowBatteryPercentage
         case 3:
             key = .shouldShowDateItem
-        /* case 4:
-            key = .shouldShowSpotlightItem */
+        case 4:
+            key = .shouldShowStatsItem
         default:
             return
         }

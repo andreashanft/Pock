@@ -141,8 +141,7 @@ class SStatsItem: StatusItem {
         refreshTimer = nil
     }
     
-    #warning("TODO: Add settings option")
-    var enabled: Bool { true } // Defaults[.shouldShowStatsItem] }
+    var enabled: Bool { Defaults[.shouldShowStatsItem] }
     
     var title: String { "stats" }
     
