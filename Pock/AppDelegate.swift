@@ -65,7 +65,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         /// Check for status bar icon
         if let button = pockStatusbarIcon.button {
             button.image = NSImage(named: "pock-inner-icon")
-            button.image?.isTemplate = true
+            button.image?.isTemplate = false
             /// Create menu
             let menu = NSMenu(title: "Pock Options")
             menu.addItem(withTitle: "Preferences…".localized, action: #selector(openPreferences),   keyEquivalent: ",")
